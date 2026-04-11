@@ -134,3 +134,24 @@ form button:hover {
     color: #8e8e8e;
     margin-bottom: 15px;
 }
+
+.error-box {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50px);
+  background-color: #e74c3c;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 999;
+}
+
+/* Show animation */
+.error-box.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}

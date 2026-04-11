@@ -18,7 +18,9 @@ def signup(request):
         if password==cnf_password:
             user = User.objects.create_user(username=username,email=email,password=password)
         else:
-            print('the password mismatch.')
+            error = 'the password mismatch.'
+            context = {'error':error}
+            return render(request,'signup.html',context)
         return redirect(home)
     return render(request,'signup.html')
 
