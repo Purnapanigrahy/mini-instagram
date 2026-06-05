@@ -10,7 +10,7 @@ def home(request):
         user  = authenticate(request,username=userormail,password = password)
         if user:
             login(request,user)
-            return render(request,'profile.html')
+            return redirect('profile')
         else:
             error = "incorrect username or password"
             return render(request,'home.html',{"error":error})
@@ -37,3 +37,14 @@ def signup(request):
 
 def profile(request):
     return render(request,'profile.html')
+
+def edit_profile(request):
+    if request.method == 'POST':
+        profile_pic = request.FILES.get('profile_pic')
+        bio = request.POST.get('bio')
+        request.user.profile.profile_pic = profile_pic
+        request.user.profile.bio = bio
+        request.user.profile.save()
+        
+        return redirect('profile')
+    return render(request,'edit_profile.html')

@@ -12,13 +12,13 @@
     <!-- Header -->
     <div class="profile-header">
         <div class="profile-img">
-            <img src="https://via.placeholder.com/150" alt="profile">
+            <img src="{{ request.user.profile.profile_pic.url }}" alt="profile">
         </div>
 
         <div class="profile-details">
             <div class="top-row">
                 <h2>{{request.user.username}}</h2>
-                <button>Edit Profile</button>
+                <a href="{% url 'edit_profile' %}"><button>Edit Profile</button></a>
             </div>
 
             <div class="stats">
@@ -28,8 +28,7 @@
             </div>
 
             <div class="bio">
-                <p><b>Your Name</b></p>
-                <p>Web Developer 🚀 | Django | React</p>
+                <p>{{ request.user.profile.bio }}</p>
             </div>
         </div>
     </div>
