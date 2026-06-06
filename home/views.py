@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 
 # Create your views here.
-def home(request):
+def signin(request):
     if request.method == 'POST':
         userormail = request.POST.get('userormail')
         password = request.POST.get('password')
@@ -13,8 +13,8 @@ def home(request):
             return redirect('profile')
         else:
             error = "incorrect username or password"
-            return render(request,'home.html',{"error":error})
-    return render(request,'home.html')
+            return render(request,'signin.html',{"error":error})
+    return render(request,'signin.html')
 
 def signup(request):
     if request.method == "POST":
@@ -32,7 +32,7 @@ def signup(request):
             error = 'the password mismatch.'
             context = {'error':error}
             return render(request,'signup.html',context)
-        return redirect(home)
+        return redirect(signin)
     return render(request,'signup.html')
 
 def profile(request):
@@ -42,9 +42,27 @@ def edit_profile(request):
     if request.method == 'POST':
         profile_pic = request.FILES.get('profile_pic')
         bio = request.POST.get('bio')
+        print(profile_pic)
+        print(bio)
         request.user.profile.profile_pic = profile_pic
         request.user.profile.bio = bio
         request.user.profile.save()
         
         return redirect('profile')
     return render(request,'edit_profile.html')
+
+def home(request):
+    return render(request,"home.html")
+
+def search(request):
+    return render(request,"search.html")
+
+def create_post(request):
+    return render(request,"create_post.html")
+
+def reels(request):
+    return render(request,"reels.html")
+
+def profile(request):
+    return render(request,"profile.html")
+    

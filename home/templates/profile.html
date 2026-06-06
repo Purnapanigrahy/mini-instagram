@@ -1,4 +1,4 @@
-{% load static %}
+<!-- {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +10,7 @@
 <div class="container">
 
     <!-- Header -->
-    <div class="profile-header">
+    <!-- <div class="profile-header">
         <div class="profile-img">
             <img src="{{ request.user.profile.profile_pic.url }}" alt="profile">
         </div>
@@ -22,9 +22,9 @@
             </div>
 
             <div class="stats">
-                <span><b>54</b> posts</span>
-                <span><b>1.2k</b> followers</span>
-                <span><b>300</b> following</span>
+                <span><b>0</b> posts</span>
+                <span><b>0</b> followers</span>
+                <span><b>0</b> following</span>
             </div>
 
             <div class="bio">
@@ -34,14 +34,149 @@
     </div>
 
     <!-- Divider -->
-    <hr>
+    <!-- <hr>
 
     <!-- Posts -->
-    <div class="posts">
+    <!-- <div class="posts">
         
     </div>
 
 </div>
 
+</body>
+</html>  -->
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+
+    <link rel="stylesheet" href="{% static 'css/temp.css' %}">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- PROFILE HEADER -->
+    <div class="profile-header">
+
+        <!-- PROFILE IMAGE -->
+        <div class="profile-image">
+            <img src="{{ request.user.profile.profile_pic.url }}" alt="Profile Picture">
+        </div>
+
+        <!-- PROFILE INFO -->
+        <div class="profile-info">
+
+            <!-- TOP BAR -->
+            <div class="top-bar">
+                <h2>{{ request.user.username }}</h2>
+
+                <a href="{% url 'edit_profile' %}">
+                    <button>Edit Profile</button>
+                </a>
+
+                <a href="#">
+                    <button>⚙️</button>
+                </a>
+            </div>
+
+            <!-- STATS -->
+            <div class="stats">
+                <div class="stat">
+                    <strong>0</strong>
+                    <span>Posts</span>
+                </div>
+            
+                <div class="stat">
+                    <strong>{{ followers_count }}0</strong>
+                    <span>Followers</span>
+                </div>
+
+                <div class="stat">
+                    <strong>{{ following_count }}0</strong>
+                    <span>Following</span>
+                </div>
+            </div>
+
+            <!-- BIO -->
+            <div class="bio">
+                <h4>{{ request.user.first_name }}</h4>
+                <p>{{ request.user.profile.bio }}</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <!-- TABS -->
+    <div class="tabs">
+        <div class="tab active">
+            <span>▦</span>
+            <span>POSTS</span>
+        </div>
+
+        <div class="tab">
+            <span>▶</span>
+            <span>REELS</span>
+        </div>
+
+        <div class="tab">
+            <span>👤</span>
+            <span>TAGGED</span>
+        </div>
+    </div>
+
+    <!-- POSTS GRID -->
+    <div class="posts-grid">
+
+        {% for post in posts %}
+            <div class="post">
+                <img src="{{ post.image.url }}" alt="Post">
+            </div>
+        {% empty %}
+            <div class="no-posts">
+                <h3>No Posts Yet</h3>
+            </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+<div class="bottom-nav">
+
+    <a href="{% url 'home' %}" class="nav-item">
+        <span>🏠</span>
+        <p>Home</p>
+    </a>
+
+    <a href="{% url 'search' %}" class="nav-item">
+        <span>🔍</span>
+        <p>Search</p>
+    </a>
+
+    <a href="{% url 'create_post' %}" class="nav-item add-btn">
+        <span>➕</span>
+    </a>
+
+    <a href="{% url 'reels' %}" class="nav-item">
+        <span>🎬</span>
+        <p>Reels</p>
+    </a>
+
+    <a href="{% url 'profile' %}" class="nav-item">
+        <img src="{{ request.user.profile.profile_pic.url }}" alt="Profile">
+        <p>Profile</p>
+    </a>
+
+</div>
 </body>
 </html>
