@@ -1,53 +1,3 @@
-<!-- {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Profile</title>
-    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
-</head>
-<body>
-
-<div class="container">
-
-    <!-- Header -->
-    <!-- <div class="profile-header">
-        <div class="profile-img">
-            <img src="{{ request.user.profile.profile_pic.url }}" alt="profile">
-        </div>
-
-        <div class="profile-details">
-            <div class="top-row">
-                <h2>{{request.user.username}}</h2>
-                <a href="{% url 'edit_profile' %}"><button>Edit Profile</button></a>
-            </div>
-
-            <div class="stats">
-                <span><b>0</b> posts</span>
-                <span><b>0</b> followers</span>
-                <span><b>0</b> following</span>
-            </div>
-
-            <div class="bio">
-                <p>{{ request.user.profile.bio }}</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Divider -->
-    <!-- <hr>
-
-    <!-- Posts -->
-    <!-- <div class="posts">
-        
-    </div>
-
-</div>
-
-</body>
-</html>  -->
-
-
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -89,17 +39,17 @@
             <!-- STATS -->
             <div class="stats">
                 <div class="stat">
-                    <strong>0</strong>
+                    <strong>{{total_post}}</strong>
                     <span>Posts</span>
                 </div>
             
                 <div class="stat">
-                    <strong>{{ followers_count }}0</strong>
+                    <strong>{{ followers_count }}</strong>
                     <span>Followers</span>
                 </div>
 
                 <div class="stat">
-                    <strong>{{ following_count }}0</strong>
+                    <strong>{{ following_count }}</strong>
                     <span>Following</span>
                 </div>
             </div>
