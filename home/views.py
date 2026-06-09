@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth import authenticate, login, logout as auth_logout
+from .models import Post
 
 # Create your views here.
 def signin(request):
@@ -36,14 +37,13 @@ def signup(request):
     return render(request,'signup.html')
 
 def profile(request):
-    return render(request,'profile.html')
+    posts = Post.objects.filter(user=request.user)
+    return render(request,'profile.html',{"posts": posts})
 
 def edit_profile(request):
     if request.method == 'POST':
         profile_pic = request.FILES.get('profile_pic')
         bio = request.POST.get('bio')
-        print(profile_pic)
-        print(bio)
         request.user.profile.profile_pic = profile_pic
         request.user.profile.bio = bio
         request.user.profile.save()
@@ -58,11 +58,26 @@ def search(request):
     return render(request,"search.html")
 
 def create_post(request):
+    if request.method == 'POST':
+        post = request.FILES.get('post')
+        caption = request.POST.get('caption')
+
+        Post.objects.create(
+            user=request.user,
+            image=post,
+            caption=caption
+        )
+        return redirect(profile)
     return render(request,"create_post.html")
 
 def reels(request):
     return render(request,"reels.html")
 
-def profile(request):
-    return render(request,"profile.html")
+
+def setting(request):
+    return render(request, "settings.html")
+
+def logout_view(request):
+    auth_logout(request)
+    return redirect('signin')
     

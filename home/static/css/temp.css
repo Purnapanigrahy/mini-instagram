@@ -264,3 +264,59 @@ hr{
 body{
     padding-bottom:80px;
 }
+
+#logout-btn{
+    background:none;
+    border:none;
+    color:#ed4956;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    padding:10px 20px;
+    transition:0.2s;
+}
+
+#logout-btn:hover{
+    opacity:0.7;
+}
+
+/* Form box */
+.form-box {
+    width: 350px;
+    background: white;
+    border: 1px solid #dbdbdb;
+    padding: 40px;
+    text-align: center;
+}
+
+.form-box h2 {
+    margin-bottom: 20px;
+    color: #262626;
+}
+
+/* Inputs */
+form input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #dbdbdb;
+    background: #fafafa;
+    border-radius: 4px;
+}
+
+/* Button */
+form button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background: #0095f6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #0077cc;
+}

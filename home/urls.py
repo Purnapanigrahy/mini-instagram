@@ -11,4 +11,6 @@ urlpatterns=[
     path('create_post',views.create_post,name='create_post'),
     path('reels',views.reels,name='reels'),
     path('profile',views.profile,name='profile'),
+    path('setting',views.setting,name='setting'),
+    path('logout',views.logout_view,name='logout'),
 ]

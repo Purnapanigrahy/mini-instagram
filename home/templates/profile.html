@@ -31,7 +31,7 @@
                     <button>Edit Profile</button>
                 </a>
 
-                <a href="#">
+                <a href="{% url 'setting' %}">
                     <button>⚙️</button>
                 </a>
             </div>
@@ -56,7 +56,6 @@
 
             <!-- BIO -->
             <div class="bio">
-                <h4>{{ request.user.first_name }}</h4>
                 <p>{{ request.user.profile.bio }}</p>
             </div>
 
