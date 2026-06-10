@@ -52,10 +52,16 @@ def edit_profile(request):
     return render(request,'edit_profile.html')
 
 def home(request):
-    return render(request,"home.html")
+    posts = Post.objects.all().exclude(user=request.user).order_by('?')
+    return render(request,"home.html",{"posts":posts})
 
 def search(request):
     return render(request,"search.html")
+
+
+def user_profile(request,userid):
+    user = User.objects.get(id=userid)
+    return render(request,"profile.html")
 
 def create_post(request):
     if request.method == 'POST':

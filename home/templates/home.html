@@ -9,7 +9,75 @@
 
 </head>
 <body>
-    
+
+    <!-- home.html -->
+
+    <div class="feed-container">
+
+    {% for post in posts %}
+
+    <div class="post-card">
+
+        <a href="{% url 'user_profile' post.user.id %}"><div class="post-header">
+            <img src="{{ post.user.profile.profile_pic.url }}"
+                 alt="profile"
+                 class="profile-pic">
+
+            <span class="username">
+                {{ post.user.username }} 
+            </span>
+        </div></a>
+
+        <div class="post-image-container">
+            <img src="{{ post.image.url }}"
+                 alt="post"
+                 class="post-image">
+        </div>
+
+        <div class="post-actions">
+
+            <button class="action-btn">
+                ❤️
+            </button>
+
+            <button class="action-btn">
+                💬
+            </button>
+
+            <button class="action-btn">
+                📤
+            </button>
+
+            <button class="action-btn save-btn">
+                🔖
+            </button>
+
+        </div>
+
+        <div class="post-content">
+
+            <p class="likes">
+                <strong>{{like.count}}</strong>
+            </p>
+
+            <p class="caption">
+                <strong>{{ post.user.username }}</strong>
+                {{ post.caption }}
+            </p>
+
+            <p class="comments">
+                View all comments
+            </p>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+    </div>
+
+
 <div class="bottom-nav">
 
     <a href="{% url 'home' %}" class="nav-item">

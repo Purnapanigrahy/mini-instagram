@@ -85,9 +85,20 @@
 
     <!-- POSTS GRID -->
     <div class="posts-grid">
-
         {% for post in posts %}
             <div class="post">
+                <div class="post-header">
+                    {% if post.user == request.user %}
+                        <div class="menu">
+                            ⋮
+                            <div class="dropdown">
+                                <a href="">
+                                    Delete
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
                 <img src="{{ post.image.url }}" alt="Post">
             </div>
         {% empty %}

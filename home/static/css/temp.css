@@ -320,3 +320,138 @@ form button {
 form button:hover {
     background: #0077cc;
 }
+
+/* style.css */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#fafafa;
+}
+
+.feed-container{
+max-width:600px;
+margin:30px auto;
+}
+
+.post-card{
+background:white;
+border:1px solid #dbdbdb;
+border-radius:8px;
+margin-bottom:25px;
+overflow:hidden;
+}
+
+.post-header{
+display:flex;
+align-items:center;
+gap:10px;
+padding:12px;
+}
+
+.profile-pic{
+width:40px;
+height:40px;
+border-radius:50%;
+object-fit:cover;
+}
+
+.username{
+font-weight:600;
+font-size:14px;
+}
+
+.post-image{
+width:100%;
+display:block;
+}
+
+.post-actions{
+display:flex;
+align-items:center;
+gap:15px;
+padding:12px;
+}
+
+.action-btn{
+border:none;
+background:none;
+font-size:24px;
+cursor:pointer;
+transition:.2s;
+}
+
+.action-btn:hover{
+transform:scale(1.1);
+}
+
+.save-btn{
+margin-left:auto;
+}
+
+.post-content{
+padding:0 12px 15px;
+}
+
+.likes{
+margin-bottom:8px;
+}
+
+.caption{
+margin-bottom:8px;
+line-height:1.4;
+}
+
+.comments{
+color:gray;
+cursor:pointer;
+}
+
+@media(max-width:768px){
+
+.feed-container{
+    width:100%;
+    margin:0;
+}
+
+.post-card{
+    border-radius:0;
+    border-left:none;
+    border-right:none;
+}
+
+}
+
+.menu{
+    margin-left:auto;
+    position:relative;
+    cursor:pointer;
+    font-size:22px;
+}
+
+.dropdown{
+    display:none;
+    position:absolute;
+    right:0;
+    top:30px;
+    background:white;
+    border:1px solid #ddd;
+    border-radius:6px;
+    min-width:120px;
+}
+
+.menu:hover .dropdown{
+    display:block;
+}
+
+.dropdown a{
+    display:block;
+    padding:10px;
+    text-decoration:none;
+    color:red;
+}
