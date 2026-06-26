@@ -14,4 +14,5 @@ urlpatterns=[
     path('setting',views.setting,name='setting'),
     path('logout',views.logout_view,name='logout'),
     path('profile/<int:userid>/',views.user_profile,name='user_profile'),
+    path('profile/d/<int:postid>/',views.deletepost,name='deletepost'),
 ]

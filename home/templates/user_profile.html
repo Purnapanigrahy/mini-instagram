@@ -17,7 +17,7 @@
 
         <!-- PROFILE IMAGE -->
         <div class="profile-image">
-            <img src="{{ request.user.profile.profile_pic.url }}" alt="Profile Picture">
+            <img src="{{ user.profile.profile_pic.url }}" alt="Profile Picture">
         </div>
 
         <!-- PROFILE INFO -->
@@ -25,15 +25,8 @@
 
             <!-- TOP BAR -->
             <div class="top-bar">
-                <h2>{{ request.user.username }}</h2>
+                <h2>{{ user.username }}</h2>
 
-                <a href="{% url 'edit_profile' %}">
-                    <button>Edit Profile</button>
-                </a>
-
-                <a href="{% url 'setting' %}">
-                    <button>⚙️</button>
-                </a>
             </div>
 
             <!-- STATS -->
@@ -56,7 +49,7 @@
 
             <!-- BIO -->
             <div class="bio">
-                <p>{{ request.user.profile.bio }}</p>
+                <p>{{ user.profile.bio }}</p>
             </div>
 
         </div>
@@ -88,16 +81,6 @@
         {% for post in posts %}
             <div class="post">
                 <div class="post-header">
-                    {% if post.user == request.user %}
-                        <div class="menu">
-                            ⋮
-                            <div class="dropdown">
-                                <a href="{% url 'deletepost' post.id %}">
-                                    Delete
-                                </a>
-                            </div>
-                        </div>
-                    {% endif %}
                 </div>
                 <img src="{{ post.image.url }}" alt="Post">
             </div>
@@ -138,7 +121,5 @@
     </a>
 
 </div>
-
-<script src="{% static 'js/deletepost.js' %}"></script>
 </body>
 </html>

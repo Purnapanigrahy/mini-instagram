@@ -61,7 +61,8 @@ def search(request):
 
 def user_profile(request,userid):
     user = User.objects.get(id=userid)
-    return render(request,"profile.html")
+    posts = Post.objects.filter(user=user)
+    return render(request,"user_profile.html",{'user':user,'posts':posts})
 
 def create_post(request):
     if request.method == 'POST':
@@ -76,6 +77,11 @@ def create_post(request):
         return redirect(profile)
     return render(request,"create_post.html")
 
+def deletepost(request,postid):
+    posts = Post.objects.filter(user=request.user)
+    Post.objects.get(id = postid).delete()
+    return render(request,'profile.html',{"posts": posts})
+    
 def reels(request):
     return render(request,"reels.html")
 

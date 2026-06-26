@@ -4,11 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>reels</title>
+    <title>search</title>
     <link rel="stylesheet" href="{% static 'css/temp.css' %}">
 
 </head>
 <body>
+
+    <div class="container">
+
+        <h2>Search Users</h2>
+        
+        <form class="search-form">
+            <input type="text" placeholder="Search username...">
+            <button type="submit">Search</button>
+        </form>
+
+        <div class="results">
+
+            <div class="user-card">
+                <img src="{{ request.user.profile.profile_pic.url }}" alt="" class="profile-pic ">
+                <div class="user-info">
+                    <h4>purna</h4>
+                    <p>Full Stack Developer</p>
+                </div>
+            </div> 
+
+        </div>
+
+    </div>
     
 <div class="bottom-nav">
 

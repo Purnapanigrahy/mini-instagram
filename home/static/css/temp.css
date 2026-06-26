@@ -443,10 +443,7 @@ cursor:pointer;
     border:1px solid #ddd;
     border-radius:6px;
     min-width:120px;
-}
-
-.menu:hover .dropdown{
-    display:block;
+    z-index: 100;
 }
 
 .dropdown a{
@@ -454,4 +451,42 @@ cursor:pointer;
     padding:10px;
     text-decoration:none;
     color:red;
+}
+
+.user-card{
+    display:flex;
+    align-items:center;
+    gap:15px;
+
+    background:white;
+    border:1px solid #dbdbdb;
+    border-radius:10px;
+
+    padding:12px 15px;
+    margin-bottom:10px;
+}
+
+.user-card img{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.user-info{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.user-info h4{
+    margin:0;
+    font-size:20px;
+    font-weight:600;
+}
+
+.user-info p{
+    margin:3px 0 0 0;
+    color:gray;
+    font-size:14px;
 }
