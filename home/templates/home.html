@@ -48,9 +48,6 @@
                 📤
             </button>
 
-            <button class="action-btn save-btn">
-                🔖
-            </button>
 
         </div>
 
@@ -64,6 +61,7 @@
                 <strong>{{ post.user.username }}</strong>
                 {{ post.caption }}
             </p>
+            {{ post.created_at.date }}
 
             <p class="comments">
                 View all comments

@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout as auth_logout
-from .models import Post
+from .models import Post,Reel
 
 # Create your views here.
 def signin(request):
@@ -38,7 +38,9 @@ def signup(request):
 
 def profile(request):
     posts = Post.objects.filter(user=request.user)
-    return render(request,'profile.html',{"posts": posts})
+    post_count = posts.count()
+    context = {"posts": posts,"post_count":post_count}
+    return render(request,'profile.html',context)
 
 def edit_profile(request):
     if request.method == 'POST':
@@ -62,7 +64,9 @@ def search(request):
 def user_profile(request,userid):
     user = User.objects.get(id=userid)
     posts = Post.objects.filter(user=user)
-    return render(request,"user_profile.html",{'user':user,'posts':posts})
+    post_count = posts.count()
+    context = {'user':user,'posts':posts,"post_count":post_count}
+    return render(request,"user_profile.html",context)
 
 def create_post(request):
     if request.method == 'POST':
@@ -81,10 +85,9 @@ def deletepost(request,postid):
     posts = Post.objects.filter(user=request.user)
     Post.objects.get(id = postid).delete()
     return render(request,'profile.html',{"posts": posts})
-    
-def reels(request):
-    return render(request,"reels.html")
 
+def reels(request):
+    return None
 
 def setting(request):
     return render(request, "settings.html")
